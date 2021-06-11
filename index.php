@@ -2,10 +2,6 @@
 
 require "configure.php";
 
-$db_handle = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
-
-$database = "booking_app";
-
 $db_found = mysqli_select_db($db_handle, $database);
 
 if (!$db_found){
@@ -27,15 +23,15 @@ if (!$db_found){
             <div class="form-group">
                 <label for="exampleInputEmail1">Username:</label>
                 <input type="text" name="username"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            </div>
-            <div class="form-group">
                 <label for="exampleInputPassword1">Password:</label>
                 <input type="password" name="pass" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
-            <input type="submit" name="admin" class="btn btn-primary" value="Admin">
-            <input type="submit" name="client" class="btn btn-primary" value="Client">
-            <hr  size="5" width="90%" color="black">
-            <input type="submit" name="createUser" class="btn btn-primary" value="Create New User">
+            <div class="form-group">
+                <input type="submit" name="admin" class="btn btn-primary" value="Admin">
+                <input type="submit" name="client" class="btn btn-primary" value="Client">
+                <hr  size="5" width="90%" color="black">
+                <input type="submit" name="createUser" class="btn btn-primary" value="Create New User">
+            </div>
         </div>
     </form>
 </body>
@@ -72,12 +68,8 @@ if(isset($_POST['createUser'])){
     header("Location: ../test/createUser.php");
 }
 
-?>
-
-</html>
-
-<?php
-
 mysqli_close($db_handle);
 
 ?>
+
+</html>

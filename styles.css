@@ -19,4 +19,47 @@ body{
 
 .container{
     transform: translate(0%, 30%);
+    text-align: center;
+    float: left;
+}
+
+.createUser{
+    width: 50%;
+    height: 30em;
+    transform: translate(50%, 30%);
+    text-align: center;
+}
+
+#userbtn{
+    margin-top: 5px;
+}
+
+#createUser{
+    border: solid black 1px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.Menu{
+    text-align: center;
+    width: 30%;
+    transform: translate(115%,190%);
+    border: solid black 1px;
+    border-radius: 10px;
+    padding-top: 10px;
+}
+
+.aMenu{
+    text-align: center;
+    width: 30%;
+    transform: translate(115%,150%);
+    border: solid black 1px;
+    border-radius: 10px;
+    padding-top: 10px;
+}
+
+#adminbtn{
+    margin-top: 5px;
+    border: solid black 1px;
+    width: 80%;
 }
