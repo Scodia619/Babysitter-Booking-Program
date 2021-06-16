@@ -1,5 +1,15 @@
 <?php 
 
+session_start();
+
+$_SESSION["name"] = "";
+$_SESSION["sname"] = "";
+$_SESSION["pnum"] = "";
+$_SESSION["hnum"] = "";
+$_SESSION["street"] = "";
+$_SESSION["pcode"] = "";
+$_SESSION["pass"] = "";
+
 require "configure.php";
 
 $db_found = mysqli_select_db($db_handle, $database);
@@ -44,7 +54,6 @@ if(isset($_POST["admin"])){
     print $usr;
     $sql = "SELECT * FROM babysitter WHERE Username='$usr' and Pass='$pass'";
     $result = mysqli_query($db_handle, $sql);
-    $result = mysqli_query($db_handle, $sql);
     if(!$result || mysqli_num_rows($result) == 0){
         header("Location: ../test/index.php?User not found");
     }else{
@@ -61,6 +70,17 @@ if(isset($_POST["client"])){
         header("Location: ../test/index.php?User not found");
     }else{
         header("Location: ../test/clientMenu.php");
+        $sql = "SELECT * FROM client WHERE Username='$usr' and Pass='$pass'";
+        $result = mysqli_query($db_handle, $sql);
+        $db_field = mysqli_fetch_assoc($result);
+        $_SESSION['user'] = $db_field['Username'];
+        $_SESSION['name'] = $db_field['Firstname'];
+        $_SESSION['sname'] = $db_field['Surname'];
+        $_SESSION['pnum'] = $db_field['PhoneNumber'];
+        $_SESSION['hnum'] = $db_field['House'];
+        $_SESSION['street'] = $db_field['StreetName'];
+        $_SESSION['pcode'] = $db_field['Postcode'];
+        $_SESSION['pass'] = $db_field['Pass'];
     }
 }
 

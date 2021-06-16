@@ -2,8 +2,6 @@
 
 require "configure.php";
 
-$db_found = mysqli_select_db($db_handle, $database);
-
 if (!$db_found){
     print "Database not Found";
 }

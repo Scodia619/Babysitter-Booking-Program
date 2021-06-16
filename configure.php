@@ -8,4 +8,6 @@ $db_handle = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
 
 $database = "booking_app";
 
+$db_found = mysqli_select_db($db_handle, $database);
+
 ?>
