@@ -39,19 +39,30 @@ require "configure.php";
     var y = d.getFullYear();
     var m = d.getMonth();
     var D = d.getDate();
-    console.log(D);
+    var re =  /^[0-9]{4}[.-]{1}[0-9]{2}[.-][0-9]{2}$/;
+
+    function success(extra) {
+
+        var check = re.test(document.getElementById("date").value);
+        console.log(document.getElementById("date").value);
+        if(!check){
+            document.getElementById("pay").value = "Date not in correct format (YYYY-MM-DD)";
+        }else{
+            pay = rate * (document.getElementById("etime").value - document.getElementById("stime").value + extra);
+            document.getElementById("pay").value = "£" + pay;
+        }
+
+    }
 
     document.getElementById("payment").onclick = function (){
         if((document.getElementById("etime").value - document.getElementById("stime").value) <= 0){
             if(confirm("Is the booking going into the next day, Past 24:00")){
-                pay = rate * (document.getElementById("etime").value - document.getElementById("stime").value + 24);
-                document.getElementById("pay").value = pay;
+                success(24);
             }else{
                 document.getElementById("pay").value = "Error End Time is the Same Or before Start Time";
             }
         }else{
-            pay = rate * (document.getElementById("etime").value - document.getElementById("stime").value);
-            document.getElementById("pay").value = pay;
+            success(0);
         }
     }
 
