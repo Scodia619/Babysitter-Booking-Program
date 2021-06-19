@@ -68,14 +68,3 @@ require "configure.php";
 
 </script>
 
-<?php 
-
-if(isset($_POST['date'])){
-    $state = "/^[0-9]{4}[.-]{1}[0-9]{2}[.-]{1}[0-9]{2}$/";
-    if(preg_match($state, $_POST['date'])){
-        echo "failed";
-    }
-    $pay = 7;
-}
-
-?>
