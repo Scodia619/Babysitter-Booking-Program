@@ -22,7 +22,7 @@
 <?php
 
 if(isset($_POST['seeBook'])){
-    header("Location: ../test/seeBooking.php");
+    header("Location: ../test/seeBookingAdmin.php");
 }
 
 if(isset($_POST['calc'])){

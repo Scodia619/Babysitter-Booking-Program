@@ -58,6 +58,8 @@ if(isset($_POST["admin"])){
         header("Location: ../test/index.php?User not found");
     }else{
         header("Location: ../test/adminMenu.php");
+        $db_field = mysqli_fetch_assoc($result);
+        $_SESSION['babysitter_id'] = $db_field['babysitter_ID'];
     }
 }
 
@@ -81,6 +83,7 @@ if(isset($_POST["client"])){
         $_SESSION['street'] = $db_field['StreetName'];
         $_SESSION['pcode'] = $db_field['Postcode'];
         $_SESSION['pass'] = $db_field['Pass'];
+        $_SESSION['client_id'] = $db_field['client_ID'];
     }
 }
 

@@ -11,11 +11,11 @@ if (!$db_found){
 }
 
 $clients = array ();
-$id = $_SESSION['client_id'];
+$id = $_SESSION['babysitter_id'];
 $i = 0;
 $date = date("Y-m-j");
 
-$SQL = "SELECT * FROM bookings WHERE client_ID = '$id' ORDER BY bdate, TimeStart ASC";
+$SQL = "SELECT * FROM bookings WHERE babysitter_ID = '$id' ORDER BY bdate, TimeStart ASC";
 $result = mysqli_query($db_handle, $SQL);
 
 while ( $db_field = mysqli_fetch_assoc($result) ) {
@@ -35,7 +35,7 @@ while ( $db_field = mysqli_fetch_assoc($result) ) {
     </head>
 
     <body>
-        <form class="createUser" action="seeBooking.php" method="post">
+        <form class="createUser" action="seeBookingAdmin.php" method="post">
                 <div class="form-group" id="createuser">
                     <label for="name">Date - YYYY-MM-DD:</label>
                     <input type="text" name="date"class="form-control" id="date" readonly>
@@ -131,7 +131,7 @@ while ( $db_field = mysqli_fetch_assoc($result) ) {
 <?php 
 
 if(isset($_POST['back'])){
-    header("Location: ../test/clientMenu.php");
+    header("Location: ../test/adminMenu.php");
 }
 
 mysqli_close($db_handle);
